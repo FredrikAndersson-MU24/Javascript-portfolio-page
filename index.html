@@ -9,20 +9,25 @@
   </head>
   <body>
     <header>
-      <h1>Fredrik Andersson</h1>
-      <nav>
-        <ul>
-          <li>
-            <a class="menu-item" href="#about">About</a>
-          </li>
-          <li>
-            <a class="menu-item" href="#portfolio">Portfolio</a>
-          </li>
-          <li>
-            <a class="menu-item" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </nav>
+      <div class="header-mobile">
+        <h1>Fredrik Andersson <button id="menu-button">MENU</button></h1>
+        <nav id="menu" class="menu">
+          <ul class="links">
+            <li>
+              <a class="menu-item" href="#">Home</a>
+            </li>
+            <li>
+              <a class="menu-item" href="#about">About</a>
+            </li>
+            <li>
+              <a class="menu-item" href="#portfolio">Portfolio</a>
+            </li>
+            <li>
+              <a class="menu-item" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -46,10 +51,10 @@
         <!-- repos -->
         <article class="repos">
           <h4 id="title">Title</h4>
-          <section class="repo-details">
+          <div class="repo-details">
             <p id="description">Short description</p>
             <img id="image" src="" alt="" />
-          </section>
+          </div>
 
           <div class="button-wrapper">
             <button class="repo-button">

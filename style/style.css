@@ -1,9 +1,10 @@
 :root {
-  --font-color: #f0f6fc;
-  --background-color: #0d1117;
+  --font-color: #0d1117;
+  --background-color: #f0f6fc;
   --font-family: Roboto;
-  --menu-item: pink;
-  --menu-item-hover: hotpink;
+  --menu-item: #f0f6fc;
+  --menu-item-hover: #bfc4c9;
+  --menu-transition: ;
 }
 
 * {
@@ -13,7 +14,8 @@
 body {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  min-width: 375px;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,52 +27,76 @@ body {
 }
 
 header {
-  width: 100%;
+  background-color: #f0f6fc;
+  width: 100vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem;
+  box-shadow: -5px 5px 10px#0d1117;
+  top: 0;
+  position: fixed;
+}
+
+main {
+  padding-top: 3rem;
 }
 
 h1 {
+  color: #0d1117;
   padding: 0;
+  margin: 0;
   display: flex;
+  justify-content: flex-start;
   /* flex: 1; */
 }
 
-nav {
+.menu {
   padding: 0;
   display: flex;
-  /* flex-direction: row; */
-  /* justify-content: flex-end; */
-  /* align-items: center; */
-  flex: 3;
+  height: 0px;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+}
+
+.show-menu {
+  justify-content: flex-end;
+  height: 11rem;
+}
+
+#menu-button {
+  right: 1rem;
+  position: fixed;
+  align-self: center;
 }
 
 ul {
   padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   font-weight: bold;
-  flex: 3;
+  flex: 1;
   list-style: none;
   gap: 0.2rem;
 }
 
+li {
+  width: 100%;
+}
+
 section {
-  border: 1px solid black;
-  border-radius: 1rem;
+  border-bottom: 1px solid black;
   margin: 1rem;
   padding: 1rem;
+  height: 100vh;
 }
 
 .repo-details {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   border: none;
-  display: flex;
-  flex-direction: row;
 }
 
 #image {
@@ -109,38 +135,53 @@ section {
   min-width: 6rem;
   padding: 0.4rem;
   background-color: var(--menu-item);
-  border: 1px solid gray;
+  border: none;
+  color: #0d1117;
 }
 
 .menu-item:hover {
   background-color: var(--menu-item-hover);
 }
 
-@media all and (max-width: 600px) {
+@media screen and (min-width: 700px) {
   body {
-    width: 100vw;
-    min-width: 375px;
-    overflow-y: auto;
+    max-width: 1200px;
   }
   header {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    width: 100vw;
   }
   h1 {
-    justify-content: center;
+    justify-content: left;
+    align-items: center;
   }
   ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex: 3;
+    margin: 0;
+  }
+  .menu {
+    height: auto;
+    padding: 0;
+  }
+  li {
+    width: 6rem;
   }
   .repo-details {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
+  }
+  #menu-button {
+    display: none;
   }
 
-  li {
-    width: 100%;
+  .header-mobile {
+    min-width: 700px;
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

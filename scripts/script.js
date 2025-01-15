@@ -1,10 +1,13 @@
 const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
+const menuButton = document.getElementById("menu-button");
 
 const title = document.getElementById("title");
 const description = document.getElementById("description");
 const link = document.getElementById("link");
 const image = document.getElementById("image");
+
+const menu = document.getElementById("menu");
 
 const repos = [
   {
@@ -71,3 +74,7 @@ function setRepo(repo) {
   link.href = repos[repo].link;
   image.src = repos[repo].img;
 }
+
+menuButton.addEventListener("click", () => {
+  menu.classList.toggle("show-menu");
+});
