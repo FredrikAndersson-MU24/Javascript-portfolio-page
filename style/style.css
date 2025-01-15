@@ -1,5 +1,5 @@
 :root {
-  --font-color: rgb(163, 86, 163);
+  --font-color: #f0f6fc;
   --background-color: #0d1117;
   --font-family: Roboto;
   --menu-item: pink;
@@ -58,6 +58,26 @@ ul {
   gap: 0.2rem;
 }
 
+section {
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.repo-details {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: row;
+}
+
+#image {
+  width: 18rem;
+  height: fit-content;
+}
+
 @media all and (max-width: 600px) {
   body {
     width: 100vw;
@@ -77,13 +97,13 @@ ul {
     align-items: center;
     flex: 1;
   }
-}
-
-section {
-  border: 1px solid black;
-  border-radius: 1rem;
-  margin: 1rem;
-  padding: 1rem;
+  .repo-details {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-button {
+    width: 90%;
+  }
 }
 
 .portfolio {
