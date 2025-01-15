@@ -1,6 +1,6 @@
 :root {
-  --font-color: purple;
-  --background-color: antique-white;
+  --font-color: rgb(163, 86, 163);
+  --background-color: #0d1117;
   --font-family: Roboto;
   --menu-item: pink;
   --menu-item-hover: hotpink;
@@ -13,7 +13,7 @@
 body {
   margin-left: auto;
   margin-right: auto;
-  width: 1200px;
+  max-width: 1200px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,22 +34,35 @@ header {
 h1 {
   padding: 0;
   display: flex;
-  flex: 1;
+  /* flex: 1; */
 }
 
 nav {
   padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  font-weight: bold;
+  /* flex-direction: row; */
+  /* justify-content: flex-end; */
+  /* align-items: center; */
   flex: 3;
 }
 
-@media all and (max-width: 500px) {
+ul {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+  flex: 3;
+  list-style: none;
+  gap: 0.2rem;
+}
+
+@media all and (max-width: 600px) {
   body {
     width: 100vw;
+    min-width: 375px;
+    overflow-y: auto;
   }
   header {
     flex-direction: column;
@@ -58,10 +71,10 @@ nav {
   h1 {
     justify-content: center;
   }
-  nav {
+  ul {
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
     flex: 1;
   }
 }
