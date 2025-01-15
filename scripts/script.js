@@ -9,7 +9,7 @@ const image = document.getElementById("image");
 const repos = [
   {
     id: 1,
-    img: "./img/image.png",
+    img: "../img/image.png",
     title: "exam-typescript-react",
     description:
       "A simple todo app built using Typescript and React. Built with components and utilizing useEffect React hook to save the array of tasks to local storage when tasks are added, checked or deleted.",
@@ -17,7 +17,7 @@ const repos = [
   },
   {
     id: 2,
-    img: "./img/image.png",
+    img: "../img/image.png",
     title: "Java-TicTacToe",
     description:
       "A simple Tic-Tac-Toe game written in Java. Textbased and played in the console. Human vs Human or Human vs CPU. Two difficulty levels against the CPU",
