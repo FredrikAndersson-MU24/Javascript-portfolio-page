@@ -78,34 +78,6 @@ section {
   height: fit-content;
 }
 
-@media all and (max-width: 600px) {
-  body {
-    width: 100vw;
-    min-width: 375px;
-    overflow-y: auto;
-  }
-  header {
-    flex-direction: column;
-    justify-content: center;
-  }
-  h1 {
-    justify-content: center;
-  }
-  ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-  }
-  .repo-details {
-    display: flex;
-    flex-direction: column;
-  }
-  .nav-button {
-    width: 90%;
-  }
-}
-
 .portfolio {
   display: flex;
   flex-direction: column;
@@ -142,4 +114,33 @@ section {
 
 .menu-item:hover {
   background-color: var(--menu-item-hover);
+}
+
+@media all and (max-width: 600px) {
+  body {
+    width: 100vw;
+    min-width: 375px;
+    overflow-y: auto;
+  }
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1 {
+    justify-content: center;
+  }
+  ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  .repo-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    width: 100%;
+  }
 }
