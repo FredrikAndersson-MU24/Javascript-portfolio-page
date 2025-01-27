@@ -13,7 +13,8 @@
 body {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  min-width: 375px;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,13 +28,14 @@ body {
 header {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem;
 }
 
 h1 {
   padding: 0;
   display: flex;
+  justify-content: center;
   /* flex: 1; */
 }
 
@@ -49,13 +51,16 @@ nav {
 ul {
   padding: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   font-weight: bold;
-  flex: 3;
+  flex: 1;
   list-style: none;
   gap: 0.2rem;
+}
+
+li {
+  width: 100%;
 }
 
 section {
@@ -66,11 +71,11 @@ section {
 }
 
 .repo-details {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   border: none;
-  display: flex;
-  flex-direction: row;
 }
 
 #image {
@@ -116,31 +121,26 @@ section {
   background-color: var(--menu-item-hover);
 }
 
-@media all and (max-width: 600px) {
+@media screen and (min-width: 600px) {
   body {
-    width: 100vw;
-    min-width: 375px;
-    overflow-y: auto;
+    max-width: 1200px;
   }
   header {
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
   }
   h1 {
-    justify-content: center;
+    justify-content: left;
   }
   ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex: 3;
+  }
+  li {
+    width: 6rem;
   }
   .repo-details {
-    display: flex;
-    flex-direction: column;
-  }
-
-  li {
-    width: 100%;
+    flex-direction: row;
   }
 }
