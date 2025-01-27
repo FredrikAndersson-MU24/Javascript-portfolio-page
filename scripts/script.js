@@ -6,6 +6,8 @@ const links = document.querySelector(".links");
 const scrollLink = document.querySelectorAll(".scrolling-link");
 const navbar = document.querySelector(".navbar");
 const date = document.getElementById("date");
+const toTopBtn = document.getElementById("to-top");
+const main = document.getElementById("main");
 date.innerHTML = new Date().getFullYear();
 
 const title = document.getElementById("title");
@@ -51,6 +53,14 @@ const repos = [
 ];
 
 let currentRepo = 0;
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+        toTopBtn.style.bottom = "2rem";
+    } else {
+        toTopBtn.style.bottom = "-8rem";
+    }
+});
 
 window.addEventListener("load", () => setRepo(currentRepo));
 
