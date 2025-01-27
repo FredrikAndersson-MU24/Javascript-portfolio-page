@@ -86,8 +86,10 @@ menuButton.addEventListener("click", () => {
     const linksHeight = links.getBoundingClientRect().height;
     if (containerHeight === 0) {
         menuItem.style.height = `${linksHeight}px`;
+        menuButton.classList.add("button-down");
     } else {
         menuItem.style.height = 0;
+        menuButton.classList.remove("button-down");
     }
 });
 
@@ -109,5 +111,6 @@ scrollLink.forEach(function (link) {
             top: position,
         });
         menuItem.style.height = 0;
+        menuButton.classList.remove("button-down");
     });
 });
