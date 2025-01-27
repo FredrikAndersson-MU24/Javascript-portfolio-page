@@ -1,71 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/style.css" />
-    <script src="scripts/script.js" defer></script>
-    <title>Fredrik Andersson</title>
-  </head>
-  <body>
-    <header>
-      <h1>Fredrik Andersson</h1>
-      <nav>
-        <ul>
-          <li>
-            <a class="menu-item" href="#about">About</a>
-          </li>
-          <li>
-            <a class="menu-item" href="#portfolio">Portfolio</a>
-          </li>
-          <li>
-            <a class="menu-item" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/style.css" />
+        <script src="scripts/script.js" defer></script>
+        <title>Fredrik Andersson</title>
+    </head>
+    <body>
+        <header class="navbar" id="home">
+            <div class="header-mobile">
+                <h1>
+                    Fredrik Andersson
+                    <button id="menu-button" class="button">MENU</button>
+                </h1>
+                <nav id="menu" class="menu">
+                    <ul class="links">
+                        <li>
+                            <a
+                                id="menu-item"
+                                class="menu-item scrolling-link"
+                                href="#home"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                id="menu-item"
+                                class="menu-item scrolling-link"
+                                href="#about"
+                                >About</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                id="menu-item"
+                                class="menu-item scrolling-link"
+                                href="#portfolio"
+                                >Portfolio</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                id="menu-item"
+                                class="menu-item scrolling-link"
+                                href="#contact"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-    <main>
-      <section id="about">
-        <h3>About me</h3>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
-          omnis quisquam pariatur unde! Nobis ea fugiat suscipit, unde at esse
-          praesentium! Doloribus alias sequi maiores quos distinctio error illo
-          ratione. Fugiat, nam. Optio quod odio dicta dignissimos vitae minus
-          accusamus nobis minima eaque libero fugiat perspiciatis esse expedita
-          quibusdam neque cum ab in doloribus, veniam pariatur possimus
-          temporibus? Nobis, et!
-        </p>
-      </section>
-      <section id="portfolio">
-        <h3 class="portfolio-heading">School projects</h3>
-        <p>
-          These are projects bulit for specific courses in the MU24 programme.
-        </p>
-        <!-- repos -->
-        <article class="repos">
-          <h4 id="title">Title</h4>
-          <section class="repo-details">
-            <p id="description">Short description</p>
-            <img id="image" src="" alt="" />
-          </section>
+        <main>
+            <!-- About -->
+            <section id="about">
+                <h3>About me</h3>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Sapiente omnis quisquam pariatur unde! Nobis ea fugiat
+                    suscipit, unde at esse praesentium! Doloribus alias sequi
+                    maiores quos distinctio error illo ratione. Fugiat, nam.
+                    Optio quod odio dicta dignissimos vitae minus accusamus
+                    nobis minima eaque libero fugiat perspiciatis esse expedita
+                    quibusdam neque cum ab in doloribus, veniam pariatur
+                    possimus temporibus? Nobis, et!
+                </p>
+            </section>
+            <!-- Portfolio -->
+            <section id="portfolio">
+                <h3 class="portfolio-heading">School projects</h3>
+                <p>
+                    These are projects bulit for specific courses in the MU24
+                    programme.
+                </p>
+                <!-- Repos -->
+                <article class="repos">
+                    <h4 id="title">Title</h4>
+                    <div class="repo-details">
+                        <p id="description">Short description</p>
+                        <img id="image" src="" alt="" />
+                    </div>
 
-          <div class="button-wrapper">
-            <button class="repo-button">
-              <a id="link" href="">Read more about project</a>
-            </button>
-            <button class="repo-button" id="prev-button">Previous</button>
-            <button class="repo-button" id="next-button">Next</button>
-          </div>
-        </article>
-        <!--  -->
-      </section>
-      <section id="contact">
-        <h3>Contact</h3>
-        email linkedin github
-      </section>
-    </main>
-    <footer>Copyright</footer>
-  </body>
+                    <div class="button-wrapper">
+                        <button class="repo-button">
+                            <a id="link" href="">Read more about project</a>
+                        </button>
+                        <button class="repo-button" id="prev-button">
+                            Previous
+                        </button>
+                        <button class="repo-button" id="next-button">
+                            Next
+                        </button>
+                    </div>
+                </article>
+                <!--  -->
+            </section>
+            <!-- Contact -->
+            <section id="contact">
+                <h3>Contact</h3>
+                <ul>
+                    <li>
+                        <a
+                            href="https://github.com/FredrikAndersson-MU24"
+                            class="contacts"
+                            >GitHub</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.linkedin.com/in/fredrik-andersson-960aa8332/"
+                            class="contacts"
+                            >LinkedIn</a
+                        >
+                    </li>
+                    <li>
+                        <a href="mailto:fredrik@fredande.se" class="contacts"
+                            >Email</a
+                        >
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer id="footer">Copyright &copy; <span id="date"></span></footer>
+        <a href="#home" class="scrolling-link button" id="to-top">/\</a>
+    </body>
 </html>
