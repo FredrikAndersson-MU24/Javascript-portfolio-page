@@ -147,12 +147,6 @@ section {
     color: #0d1117;
 }
 
-#to-top {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-}
-
 .button {
     display: flex;
     justify-content: center;
@@ -167,7 +161,11 @@ section {
     box-shadow: 4px 4px 8px gray;
     transition: var(--transition);
 }
-
+.to-top {
+    position: fixed;
+    right: 2rem;
+    bottom: -8rem;
+}
 .button-down {
     border-radius: 0;
     transition: var(--transition);
