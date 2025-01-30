@@ -1,24 +1,25 @@
 import "./style/style.css";
+import { useRef, useState } from "react";
 
 function App() {
-    const prevButton = document.getElementById("prev-button");
-    const nextButton = document.getElementById("next-button");
-    const menuButton = document.getElementById("menu-button");
-    const menuItem = document.querySelector(".menu");
-    const links = document.querySelector(".links");
-    const scrollLink = document.querySelectorAll(".scrolling-link");
-    const navbar = document.querySelector(".navbar");
-    // const date = document.getElementById("date");
-    const toTopBtn = document.getElementById("to-top");
-    // const main = document.getElementById("main");
-    // date.innerHTML = new Date().getFullYear();
+    const [currentRepo, setCurrentRepo] = useState(0);
+    const homeRef = useRef(null);
+    const aboutRef = useRef(null);
+    const portfolioRef = useRef(null);
+    const contactRef = useRef(null);
 
-    const title = document.getElementById("title");
-    const description = document.getElementById("description");
-    const link = document.getElementById("link");
-    const image = document.getElementById("image");
-
-    const menu = document.getElementById("menu");
+    const prevButtonRef = useRef(null);
+    const nextButtonRef = useRef(null);
+    const menuButtonRef = useRef(null);
+    const menuItemRef = useRef(null);
+    const linksRef = useRef(null);
+    const toTopBtnRef = useRef(null);
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+    const linkRef = useRef(null);
+    const imageRef = useRef(null);
+    const menuRef = useRef(null);
+    const navbarRef = useRef(null);
 
     const repos = [
         {
@@ -55,96 +56,79 @@ function App() {
         },
     ];
 
-    let currentRepo = 0;
-
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-            toTopBtn.style.bottom = "2rem";
-        } else {
-            toTopBtn.style.bottom = "-8rem";
-        }
-    });
-
-    window.addEventListener("load", () => setRepo(currentRepo));
-
     // Clicking the previous button
-    prevButton.addEventListener("click", () => {
-        currentRepo--;
-        if (currentRepo < 0) {
-            currentRepo = repos.length - 1;
+    const prevRepo = () => {
+        setCurrentRepo(currentRepo - 1);
+        if (currentRepo <= 0) {
+            setCurrentRepo(repos.length - 1);
         }
         console.log(currentRepo);
-        setRepo(currentRepo);
-    });
+    };
 
     // Clicking the next button
-    nextButton.addEventListener("click", () => {
-        currentRepo++;
-        if (currentRepo > repos.length - 1) {
-            currentRepo = 0;
+    const nextRepo = () => {
+        setCurrentRepo(currentRepo + 1);
+        if (currentRepo >= repos.length - 1) {
+            setCurrentRepo(0);
         }
         console.log(currentRepo);
-        setRepo(currentRepo);
-    });
+    };
 
-    function setRepo(repo) {
-        title.innerText = repos[repo].title;
-        description.innerText = repos[repo].description;
-        link.href = repos[repo].link;
-        image.src = repos[repo].img;
-    }
-
-    menuButton.addEventListener("click", () => {
-        const containerHeight = menuItem.getBoundingClientRect().height;
-        const linksHeight = links.getBoundingClientRect().height;
-        if (containerHeight === 0) {
-            menuItem.style.height = `${linksHeight}px`;
-            menuButton.classList.add("button-down");
-        } else {
-            menuItem.style.height = 0;
-            menuButton.classList.remove("button-down");
-        }
-    });
-
-    // menuItem.addEventListener("click", () => {
-    //     menu.classList.toggle("show-menu");
-    // });
-
-    scrollLink.forEach(function (link) {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const id = e.currentTarget.getAttribute("href").slice(1);
-            const element = document.getElementById(id);
-            const navHeight = navbar.getBoundingClientRect().height;
-            const containerHeight = menuItem.getBoundingClientRect().height;
-            let position = element.offsetTop - navHeight + containerHeight - 10;
-            console.log(position);
-            window.scrollTo({
-                left: 0,
-                top: position,
-            });
-            menuItem.style.height = 0;
-            menuButton.classList.remove("button-down");
+    const scrollToSection = (ref) => {
+        const navbarHeight = navbarRef.current.getBoundingClientRect().height;
+        window.scrollTo({
+            top: ref.current.offsetTop - navbarHeight,
+            behavior: "smooth",
         });
-    });
+    };
 
     return (
         <>
-            <header class="navbar" id="home">
-                <div class="header-mobile">
+            <header className="navbar" id="home" ref={navbarRef}>
+                <div className="header-mobile">
                     <h1>
                         Fredrik Andersson
-                        <button id="menu-button" class="button">
+                        <button
+                            id="menu-button"
+                            className="button"
+                            ref={menuButtonRef}
+                            onClick={() => {
+                                const containerHeight =
+                                    menuRef.current.getBoundingClientRect()
+                                        .height;
+                                console.log(containerHeight);
+                                const linksHeight =
+                                    linksRef.current.getBoundingClientRect()
+                                        .height;
+                                console.log(linksHeight);
+                                if (containerHeight === 0) {
+                                    menuRef.current.style.height = `${linksHeight}px`;
+                                    menuButtonRef.current.classList.add(
+                                        "button-down"
+                                    );
+                                } else {
+                                    menuRef.current.style.height = 0;
+                                    menuButtonRef.current.classList.remove(
+                                        "button-down"
+                                    );
+                                }
+                            }}
+                        >
                             MENU
                         </button>
                     </h1>
-                    <nav id="menu" class="menu">
-                        <ul class="links">
+                    <nav id="menu" className="menu" ref={menuRef}>
+                        <ul className="links" ref={linksRef}>
                             <li>
                                 <a
                                     id="menu-item"
-                                    class="menu-item scrolling-link"
-                                    href="#home"
+                                    className="menu-item scrolling-link "
+                                    onClick={() => {
+                                        menuRef.current.style.height = 0;
+                                        setTimeout(() => {
+                                            scrollToSection(navbarRef);
+                                        }, 300);
+                                    }}
                                 >
                                     Home
                                 </a>
@@ -152,8 +136,13 @@ function App() {
                             <li>
                                 <a
                                     id="menu-item"
-                                    class="menu-item scrolling-link"
-                                    href="#about"
+                                    className="menu-item scrolling-link "
+                                    onClick={() => {
+                                        menuRef.current.style.height = 0;
+                                        setTimeout(() => {
+                                            scrollToSection(aboutRef);
+                                        }, 300);
+                                    }}
                                 >
                                     About
                                 </a>
@@ -161,8 +150,13 @@ function App() {
                             <li>
                                 <a
                                     id="menu-item"
-                                    class="menu-item scrolling-link"
-                                    href="#portfolio"
+                                    className="menu-item scrolling-link "
+                                    onClick={() => {
+                                        menuRef.current.style.height = 0;
+                                        setTimeout(() => {
+                                            scrollToSection(portfolioRef);
+                                        }, 300);
+                                    }}
                                 >
                                     Portfolio
                                 </a>
@@ -170,8 +164,13 @@ function App() {
                             <li>
                                 <a
                                     id="menu-item"
-                                    class="menu-item scrolling-link"
-                                    href="#contact"
+                                    className="menu-item scrolling-link "
+                                    onClick={() => {
+                                        menuRef.current.style.height = 0;
+                                        setTimeout(() => {
+                                            scrollToSection(contactRef);
+                                        }, 300);
+                                    }}
                                 >
                                     Contact
                                 </a>
@@ -183,7 +182,7 @@ function App() {
 
             <main>
                 {/* <!-- About --> */}
-                <section id="about">
+                <section ref={aboutRef}>
                     <h3>About me</h3>
                     <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
@@ -198,30 +197,42 @@ function App() {
                     </p>
                 </section>
                 {/* <!-- Portfolio --> */}
-                <section id="portfolio">
-                    <h3 class="portfolio-heading">School projects</h3>
+                <section ref={portfolioRef}>
+                    <h3 className="portfolio-heading">School projects</h3>
                     <p>
                         These are projects bulit for specific courses in the
                         MU24 programme.
                     </p>
                     {/* <!-- Repos --> */}
-                    <article class="repos">
+                    <article className="repos">
                         <h4 id="title">Title</h4>
-                        <div class="repo-details">
+                        <div className="repo-details">
                             <p id="description">Short description</p>
                             <img id="image" src="" alt="" />
                         </div>
 
-                        <div class="button-wrapper">
-                            <button class="repo-button">
+                        <div className="button-wrapper">
+                            <button className="repo-button">
                                 <a id="link" href="">
                                     Read more about project
                                 </a>
                             </button>
-                            <button class="repo-button" id="prev-button">
+                            <button
+                                className="repo-button"
+                                id="prev-button"
+                                onClick={() => {
+                                    prevRepo();
+                                }}
+                            >
                                 Previous
                             </button>
-                            <button class="repo-button" id="next-button">
+                            <button
+                                className="repo-button"
+                                id="next-button"
+                                onClick={() => {
+                                    nextRepo();
+                                }}
+                            >
                                 Next
                             </button>
                         </div>
@@ -229,13 +240,13 @@ function App() {
                     {/* <!--  --> */}
                 </section>
                 {/* <!-- Contact --> */}
-                <section id="contact">
+                <section ref={contactRef}>
                     <h3>Contact</h3>
                     <ul>
                         <li>
                             <a
                                 href="https://github.com/FredrikAndersson-MU24"
-                                class="contacts"
+                                className="contacts"
                             >
                                 GitHub
                             </a>
@@ -243,7 +254,7 @@ function App() {
                         <li>
                             <a
                                 href="https://www.linkedin.com/in/fredrik-andersson-960aa8332/"
-                                class="contacts"
+                                className="contacts"
                             >
                                 LinkedIn
                             </a>
@@ -251,7 +262,7 @@ function App() {
                         <li>
                             <a
                                 href="mailto:fredrik@fredande.se"
-                                class="contacts"
+                                className="contacts"
                             >
                                 Email
                             </a>
@@ -262,7 +273,11 @@ function App() {
             <footer id="footer">
                 Copyright &copy; <span id="date"></span>
             </footer>
-            <a href="#home" class="scrolling-link button to-top" id="to-top">
+            <a
+                href="#home"
+                className="scrolling-link button to-top"
+                id="to-top"
+            >
                 /\
             </a>
         </>
