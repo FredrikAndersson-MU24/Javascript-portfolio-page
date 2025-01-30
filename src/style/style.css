@@ -12,10 +12,6 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin-left: auto;
     margin-right: auto;
@@ -148,6 +144,7 @@ section {
     background-color: var(--menu-item);
     border: none;
     color: #0d1117;
+    cursor: pointer;
 }
 
 .button {
