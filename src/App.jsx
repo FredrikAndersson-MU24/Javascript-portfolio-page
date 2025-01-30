@@ -125,6 +125,9 @@ function App() {
                                     className="menu-item scrolling-link "
                                     onClick={() => {
                                         menuRef.current.style.height = 0;
+                                        menuButtonRef.current.classList.remove(
+                                            "button-down"
+                                        );
                                         setTimeout(() => {
                                             scrollToSection(navbarRef);
                                         }, 300);
@@ -139,6 +142,9 @@ function App() {
                                     className="menu-item scrolling-link "
                                     onClick={() => {
                                         menuRef.current.style.height = 0;
+                                        menuButtonRef.current.classList.remove(
+                                            "button-down"
+                                        );
                                         setTimeout(() => {
                                             scrollToSection(aboutRef);
                                         }, 300);
@@ -153,6 +159,9 @@ function App() {
                                     className="menu-item scrolling-link "
                                     onClick={() => {
                                         menuRef.current.style.height = 0;
+                                        menuButtonRef.current.classList.remove(
+                                            "button-down"
+                                        );
                                         setTimeout(() => {
                                             scrollToSection(portfolioRef);
                                         }, 300);
@@ -167,6 +176,9 @@ function App() {
                                     className="menu-item scrolling-link "
                                     onClick={() => {
                                         menuRef.current.style.height = 0;
+                                        menuButtonRef.current.classList.remove(
+                                            "button-down"
+                                        );
                                         setTimeout(() => {
                                             scrollToSection(contactRef);
                                         }, 300);
