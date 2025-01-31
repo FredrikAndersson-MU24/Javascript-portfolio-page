@@ -24,7 +24,7 @@ function App() {
     const repos = [
         {
             id: 1,
-            img: "../img/exam-typescript-react.png",
+            img: "src/img/exam-typescript-react.png",
             title: "exam-typescript-react",
             description:
                 "A simple todo app built using Typescript and React. Built with components and utilizing useEffect React hook to save the array of tasks to local storage when tasks are added, checked or deleted.",
@@ -32,7 +32,7 @@ function App() {
         },
         {
             id: 2,
-            img: "../img/java-tictactoe.png",
+            img: "src/img/java-tictactoe.png",
             title: "Java-TicTacToe",
             description:
                 "A simple Tic-Tac-Toe game written in Java for an individual exam. Textbased and played in the console. Human vs Human or Human vs CPU. Two difficulty levels against the CPU",
@@ -40,7 +40,7 @@ function App() {
         },
         {
             id: 3,
-            img: "../img/FLIM-phonebook.png",
+            img: "src/img/FLIM-phonebook.png",
             title: "FLIM-Phonebook",
             description:
                 "A group project built for the final exam in the Java course. Utilizing OOP, CRUD, inheritance and persistant data using FileStream our group of four bulit this textbased phone book application. PArt of the assignment was using UML and Trello to track work.",
@@ -48,7 +48,7 @@ function App() {
         },
         {
             id: 4,
-            img: "../img/mu24-frontend-intro-exam.png",
+            img: "src/img/mu24-frontend-intro-exam.png",
             title: "frontend-intro-exam",
             description:
                 "A simple todo-app. It uses the browser local storage to save the tasks and their status between browser sessions.",
@@ -62,7 +62,7 @@ function App() {
         if (currentRepo <= 0) {
             setCurrentRepo(repos.length - 1);
         }
-        console.log(currentRepo);
+        console.log(repos[currentRepo].img);
     };
 
     // Clicking the next button
@@ -71,7 +71,7 @@ function App() {
         if (currentRepo >= repos.length - 1) {
             setCurrentRepo(0);
         }
-        console.log(currentRepo);
+        console.log(repos[currentRepo].img);
     };
 
     const scrollToSection = (ref) => {
@@ -195,42 +195,54 @@ function App() {
             <main>
                 {/* <!-- About --> */}
                 <section ref={aboutRef}>
-                    <h3>About me</h3>
-                    <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Sapiente omnis quisquam pariatur unde! Nobis ea
-                        fugiat suscipit, unde at esse praesentium! Doloribus
-                        alias sequi maiores quos distinctio error illo ratione.
-                        Fugiat, nam. Optio quod odio dicta dignissimos vitae
-                        minus accusamus nobis minima eaque libero fugiat
-                        perspiciatis esse expedita quibusdam neque cum ab in
-                        doloribus, veniam pariatur possimus temporibus? Nobis,
-                        et!
-                    </p>
+                    <article>
+                        <h2>About me</h2>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Sapiente omnis quisquam pariatur unde! Nobis
+                            ea fugiat suscipit, unde at esse praesentium!
+                            Doloribus alias sequi maiores quos distinctio error
+                            illo ratione. Fugiat, nam. Optio quod odio dicta
+                            dignissimos vitae minus accusamus nobis minima eaque
+                            libero fugiat perspiciatis esse expedita quibusdam
+                            neque cum ab in doloribus, veniam pariatur possimus
+                            temporibus? Nobis, et!
+                        </p>
+                    </article>
                 </section>
                 {/* <!-- Portfolio --> */}
                 <section ref={portfolioRef}>
-                    <h3 className="portfolio-heading">School projects</h3>
+                    <h2 className="portfolio-heading">School projects</h2>
                     <p>
                         These are projects bulit for specific courses in the
                         MU24 programme.
                     </p>
                     {/* <!-- Repos --> */}
                     <article className="repos">
-                        <h4 id="title">Title</h4>
+                        <h3 id="title" ref={titleRef}>
+                            {repos[currentRepo].title}
+                        </h3>
                         <div className="repo-details">
-                            <p id="description">Short description</p>
-                            <img id="image" src="" alt="" />
+                            <p id="description" ref={descriptionRef}>
+                                {" "}
+                                {repos[currentRepo].description}
+                            </p>
+
+                            <img
+                                id="image"
+                                ref={imageRef}
+                                src={repos[currentRepo].img}
+                            />
                         </div>
 
                         <div className="button-wrapper">
-                            <button className="repo-button">
-                                <a id="link" href="">
+                            <button className="repo-button button">
+                                <a id="link" href={repos[currentRepo].img}>
                                     Read more about project
                                 </a>
                             </button>
                             <button
-                                className="repo-button"
+                                className="repo-button button"
                                 id="prev-button"
                                 onClick={() => {
                                     prevRepo();
@@ -239,7 +251,7 @@ function App() {
                                 Previous
                             </button>
                             <button
-                                className="repo-button"
+                                className="repo-button button"
                                 id="next-button"
                                 onClick={() => {
                                     nextRepo();
@@ -253,7 +265,7 @@ function App() {
                 </section>
                 {/* <!-- Contact --> */}
                 <section ref={contactRef}>
-                    <h3>Contact</h3>
+                    <h2>Contact</h2>
                     <ul>
                         <li>
                             <a

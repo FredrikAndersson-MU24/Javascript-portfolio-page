@@ -30,7 +30,7 @@ body {
 
 header {
     background-color: #f0f6fc;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -90,8 +90,7 @@ li {
 
 section {
     border-bottom: 1px solid black;
-    margin: 1rem;
-    padding: 1rem;
+    padding: 1em;
     height: 100vh;
 }
 
@@ -101,11 +100,14 @@ section {
     margin: 0;
     padding: 0;
     border: none;
+    height: 18rem;
 }
 
 #image {
-    width: 18rem;
-    height: fit-content;
+    /* width: 18rem; */
+    /* height: fit-content; */
+    align-self: center;
+    /* flex: 2; */
 }
 
 .portfolio {
@@ -121,7 +123,7 @@ section {
 }
 
 #description {
-    height: 6rem;
+    height: 8rem;
     flex: 3;
 }
 .portfolio-heading,
@@ -156,7 +158,7 @@ section {
     border-radius: 2rem;
     background-color: #0d1117;
     color: #bfc4c9;
-    padding: 0;
+    padding: 1em;
     margin: 0;
     box-shadow: 4px 4px 8px gray;
     transition: var(--transition);
@@ -173,12 +175,16 @@ section {
     transition: var(--transition);
 }
 
-h3 {
+h2 {
     font-size: 1.6rem;
+}
+h3 {
+    font-size: 1.4rem;
 }
 
 p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    margin: 1em;
 }
 
 @media screen and (min-width: 43.75rem) {
@@ -229,6 +235,7 @@ p {
     }
     .repo-details {
         flex-direction: row;
+        height: 10rem;
     }
     #menu-button {
         display: none;
