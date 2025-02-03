@@ -1,5 +1,5 @@
 import "./style/style.css";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import RepoCard from "./Components/RepoCard";
 
 function App() {
