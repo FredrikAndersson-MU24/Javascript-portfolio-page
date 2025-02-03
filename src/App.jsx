@@ -1,5 +1,6 @@
 import "./style/style.css";
 import { useRef, useState } from "react";
+import RepoCard from "./Components/RepoCard";
 
 function App() {
     const [currentRepo, setCurrentRepo] = useState(0);
@@ -219,28 +220,16 @@ function App() {
                     </p>
                     {/* <!-- Repos --> */}
                     <article className="repos">
-                        <h3 id="title" ref={titleRef}>
-                            {repos[currentRepo].title}
-                        </h3>
-                        <div className="repo-details">
-                            <p id="description" ref={descriptionRef}>
-                                {" "}
-                                {repos[currentRepo].description}
-                            </p>
-
-                            <img
-                                id="image"
-                                ref={imageRef}
-                                src={repos[currentRepo].img}
-                            />
-                        </div>
-
+                        <RepoCard
+                            title={repos[currentRepo].title}
+                            description={repos[currentRepo].description}
+                            image={repos[currentRepo].img}
+                            link={repos[currentRepo].link}
+                            descriptionRef={descriptionRef}
+                            titleRef={titleRef}
+                            imageRef={imageRef}
+                        />
                         <div className="button-wrapper">
-                            <button className="repo-button button">
-                                <a id="link" href={repos[currentRepo].img}>
-                                    Read more about project
-                                </a>
-                            </button>
                             <button
                                 className="repo-button button"
                                 id="prev-button"
