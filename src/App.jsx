@@ -1,5 +1,5 @@
 import "./style/style.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
     const [currentRepo, setCurrentRepo] = useState(0);
@@ -20,6 +20,7 @@ function App() {
     const imageRef = useRef(null);
     const menuRef = useRef(null);
     const navbarRef = useRef(null);
+    const toTopRef = useRef(null);
 
     const repos = [
         {
@@ -81,6 +82,18 @@ function App() {
             behavior: "smooth",
         });
     };
+
+    useEffect(() => {
+        function onScroll() {
+            let currentPosition = window.scrollY;
+            if (currentPosition > 200) {
+                toTopRef.current.classList.add("to-top-show");
+            } else {
+                toTopRef.current.classList.remove("to-top-show");
+            }
+        }
+        window.addEventListener("scroll", onScroll);
+    });
 
     return (
         <>
@@ -301,6 +314,7 @@ function App() {
                 href="#home"
                 className="scrolling-link button to-top"
                 id="to-top"
+                ref={toTopRef}
             >
                 /\
             </a>
